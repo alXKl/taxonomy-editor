@@ -5,4 +5,4 @@ __pycache__/
 #app/embeddings/indexGloVe_vectors
 .gitattributes
 .gitignore
-readme.txt
+readme.md
