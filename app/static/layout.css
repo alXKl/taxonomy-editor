@@ -1,0 +1,231 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+/*------------------------------------------------------*/
+
+
+#embeddingLabel {
+    margin:5px 5px 0 2px;
+}
+
+
+.form-control:focus {
+  border-color: #18acb4 !important;
+  box-shadow: 0 0 5px rgba(24, 172, 180, 1) !important;
+}
+
+.dropdown-menu-center {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.navbar .btn-group .dropdown-menu a:hover {
+    background-color: #18acb4 !important;
+    color: #fefefe !important;
+}
+.navbar .btn-group .dropdown-menu{
+    background-color: #f2f2f2 !important;
+}
+
+
+.input-group #termsearch {
+    width: 350px;
+/*    z-index:1000; */
+}
+
+/*
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+input,
+label {
+    margin: .4rem 0;
+}
+*/
+
+.btn-group .active {
+  background-color: #18acb4 !important;
+  border-color: #18acb4 !important;
+}
+
+.mat-toggle .active {
+  background-color: #18acb4 !important;
+  border-color: #18acb4 !important;
+}
+
+
+
+.relbtn {
+    height: 40px !important;
+    width: 10% !important;
+    text-align: center;
+    margin: auto;
+}
+
+#syno {
+    background-color: #a37c27 !important;
+}
+#anto {
+    background-color: #a7414a !important;
+}
+#hyper {
+    background-color: #6a8a82 !important;
+}
+#hypo {
+    background-color: #74593d  !important;
+}
+#cohypo {
+    background-color: #54678f !important;
+}
+#mero {
+    background-color: #563838 !important;
+}
+#holo {
+    background-color: #595775 !important;
+}
+#tropo {
+    background-color: #516b4e !important;
+}
+
+
+.tooltip {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.42857143;
+  /*text-align: left;*/
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+  /* ... */
+}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 5px 8px;
+  color: black;
+  text-align: center;
+  background-color: #f2f2f2;
+  border: 1px solid #bdbdbd;
+}
+.tooltip {
+  margin-top: -10px;
+}
+
+.lrnbadge {
+  margin-top: 4px;
+  padding: 2px 5px 2px 5px;
+  font-size: 15px;
+  font-weight: normal;
+  background-color: #d0d0d0;
+}
+
+.annobadge {
+  padding: 7px 9px 2px;
+  font-size: 17px;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+
+.btn-neutral {
+    position: absolute;
+    top: 500px;
+    left: 100px;
+}
+
+
+.list-group{
+      display:inline-block;
+      position: absolute;
+      z-index: 999;
+      top: 7%;
+      left: 45%;
+ }
+
+.list-group-item {
+      background-color: #f2f2f2;
+      color: black;
+      height: 40px;
+      padding: 10px 15px;
+  /*border-top: 1px solid #0091b5;*/
+  /*border-left-color: #fff;*/
+  /*border-right-color: #fff;*/
+}
+
+.list-group-action:hover {
+      background-color: #18acb4; /*#17a2b8;*/
+	  color: #fefefe;
+      text-decoration:none;
+}
+
+
+
+#modalDialog {
+    margin: 30vh auto 0 auto;
+    /*background-color: #f2f2f2;*/
+}
+
+.modal-content {
+      background-color: #f2f2f2;
+}
+
+
+
+/*Modal - Projection Matrices*/
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.matModal {
+    width: 733px;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+
+/*Canvas position*/
+#graphDiv {
+    width: 2000px;
+    height: 850px;
+    position:absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
+}
+
+/*Canvas position*/
+#editorContent {
+    width: 650px;
+    position:absolute;
+    /*top: 0; bottom: 0;*/
+    /*left: 0; right: 0;*/
+    margin: auto;
+}
+
+
+
+

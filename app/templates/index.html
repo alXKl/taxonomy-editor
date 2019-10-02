@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../static/bootstrap.min.css" >
+    <link rel="stylesheet" href="../static/layout.css" >
+    <link rel="stylesheet" href="../static/graph.css">
+    <link rel="stylesheet" href="../static/context-menu.css">
+
+
+    <title>Taxonomy Editor</title>
+
+  </head>
+
+  <body>
+
+    <header>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Taxonomy Editor</a>
+        </div>
+
+        <div class="btn-toolbar">
+            <label class="resultLabel text-center" id="embeddingLabel" style="color:white">Embedding: </label>
+            <form class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="optionGer" autocomplete="off" > German
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="optionEn" autocomplete="off"> English
+              </label>
+              <label class="btn btn-secondary" onclick="$('#file-upload').click();">
+                <input type="radio" name="options" id="optionOwn" autocomplete="off"> Custom
+              </label>
+            </form>
+            <form class="mx-3 form-inline" id="upload-file" method="post" enctype="multipart/form-data">
+               <input type="file" name="file" id="file-upload" style="display: none;" />
+               <button type="button" class="btn btn-secondary" id="loadbtn">Load</button>
+            </form>
+        </div>
+
+        <form class="myinputform">
+          <div class="input-group">
+            <input type="text" class="form-control" id="termsearch" placeholder="Write some term&hellip;" autocomplete="off" onkeypress="return searchKeyPress(event);"/>
+            <button class="btn btn-secondary" id="termbtn" type="button">Add</button>
+          </div>
+        </form>
+
+          <form class="countergrp">
+            <label class="resultLabel" id="resultLabel" style="color:white">Results: </label>
+            <input class="btn btn-secondary" type="number" min="1" max="20" id="resultCounter" style="width: 5em;" value=5>
+        </form>
+
+        <form class="clearcanvas">
+            <button type="button" class="btn btn-secondary" id="clearbtn" onclick="clearcanvas()">Clear Canvas</button>
+        </form>
+
+        <form class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="learnbtn">Learning</button>
+            <div class="dropdown-menu dropdown-menu-center lrn-dropdown">
+                <form class="px-4 py-3">
+                    <div class="form-group container-fluid">
+                        <label class="learnrateLabel" id="learnrateLabel">Learning Rate:</label>
+                        <input type="number" min="0.0" max="1.0" step="0.01" value=0.3 class="form-control" id="learnRate">
+                    </div>
+                    <div class="form-group container-fluid">
+                        <label class="iterationsLabel" id="iterationsLabel">Iterations:</label>
+                        <input type="number" min="1" max="10000" value=10 class="form-control" id="iterations">
+                    </div>
+                </form>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" id="lrnAll">Learn All<span class="badge lrnbadge" id="lrnAllbadge" style="float:right;"></span></a>
+                <a class="dropdown-item" href="#" id="lrnSyno">Synonym<span class="badge lrnbadge" id="lrnSynobadge" style="float:right;"></span></a>
+                <a class="dropdown-item" href="#" id="lrnAnto">Antonym<span class="badge lrnbadge" id="lrnAntobadge" style="float:right;"></span></a>
+                <a class="dropdown-item" href="#" id="lrnHyper">Hypernym<span class="badge lrnbadge" id="lrnHyperbadge" style="float:right;"></span></a>
+                <a class="dropdown-item" href="#" id="lrnHypo">Hyponym<span class="badge lrnbadge" id="lrnHypobadge" style="float:right;"></span></a>
+                <a class="dropdown-item" href="#" id="lrnCohypo">Cohyponym<span class="badge lrnbadge" id="lrnCohypobadge" style="float:right;"></span></a>
+                <a class="dropdown-item" href="#" id="lrnMero">Meronym<span class="badge lrnbadge" id="lrnMerobadge" style="float:right;"></span></a>
+                <a class="dropdown-item" href="#" id="lrnHolo">Holonym<span class="badge lrnbadge" id="lrnHolobadge" style="float:right;"></span></a>
+                <a class="dropdown-item" href="#" id="lrnTropo">Troponym<span class="badge lrnbadge" id="lrnTropobadge" style="float:right;"></span></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" id="learnHist">Learn History</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" id="clrBatch">Clear Batch</a>
+                <a class="dropdown-item" href="#" id="resetMat">Reset Matrices</a>
+            </div>
+        </form>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Projections</button>
+            <div class="dropdown-menu dropdown-menu-center">
+                <a class="dropdown-item" href="#" id="projSyno">Synonym</a>
+                <a class="dropdown-item" href="#" id="projAnto">Antonym</a>
+                <a class="dropdown-item" href="#" id="projHyper">Hypernym</a>
+                <a class="dropdown-item" href="#" id="projHypo">Hyponym</a>
+                <a class="dropdown-item" href="#" id="projCohypo">Cohyponym</a>
+                <a class="dropdown-item" href="#" id="projMero">Meronym</a>
+                <a class="dropdown-item" href="#" id="projHolo">Holonym</a>
+                <a class="dropdown-item" href="#" id="projTropo">Troponym</a>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">History</button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#" id="annoHist">Annotation History</a>
+                <a class="dropdown-item" href="#" id="histGraph">History Graph</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" id="clrHist">Clear History</a>
+            </div>
+        </div>
+
+      </div>
+    </nav>
+
+    </header>
+
+    <div id="listNode" class="list-group"></div>
+    <div id="listLink" class="list-group"></div>
+
+    <div id="graphDiv"></div>
+
+    <div class="modal fade" id="modalDialog" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body" id="modalMsg" style="font-size: 15pt;"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalProjections" tabindex="-1" role="dialog">
+      <div class="vertical-alignment-helper">
+      <div class="modal-dialog vertical-align-center">
+        <div class="modal-content matModal">
+          <div class="modal-body">
+              <div id="matDiv"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalEditor" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="editorContent">
+          <div class="modal-body form-group">
+              <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <label for="histEditor"></label>
+                <textarea class="form-control" id="histEditor" rows="25" style="font-size: 15pt; width: 100%"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" id="saveHist">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark bottomnav">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-secondary relbtn" id="syno" data-relation="syno" data-toggle="tooltip" data-html="true" title="<u>The Same</u><br>sick - ill" style="text-align:left;">Synonym<span class="badge annobadge" id="synobadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="anto" data-relation="anto" data-toggle="tooltip" data-html="true" title="<u>Difference</u><br>good - bad" style="text-align:left;">Antonym<span class="badge annobadge" id="antobadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="hyper" data-relation="hyper" data-toggle="tooltip" data-html="true" title="<u>Superordinate</u><br>tulip - flower" style="text-align:left;">Hypernym<span class="badge annobadge" id="hyperbadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="hypo" data-relation="hypo" data-toggle="tooltip" data-html="true" title="<u>Subordinate</u><br>plant - flower" style="text-align:left;">Hyponym<span class="badge annobadge" id="hypobadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="cohypo" data-relation="cohypo" data-toggle="tooltip" data-html="true" title="<u>Shared Hypernym</u><br>man - woman" style="text-align:left;">Cohyponym<span class="badge annobadge" id="cohypobadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="mero" data-relation="mero" data-toggle="tooltip" data-html="true" title="<u>Part of</u><br>tree - bark" style="text-align:left;">Meronym<span class="badge annobadge" id="merobadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="holo" data-relation="holo" data-toggle="tooltip" data-html="true" title="<u>Entire</u><br>tree - forest" style="text-align:left;">Holonym<span class="badge annobadge" id="holobadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="tropo" data-relation="tropo" data-toggle="tooltip" data-html="true" title="<u>Transitive Relation</u><br>spin - move" style="text-align:left;">Troponym<span class="badge annobadge" id="tropobadge" style="float:right;"></span></button>
+      </div>
+    </nav>
+
+    <script src="../static/jquery.min.js"></script>
+    <script src="../static/popper.min.js"></script>
+    <script src="../static/bootstrap.min.js"></script>
+    <script src="../static/plotly.min.js"></script>
+    <script src="../static/d3.v3.min.js"></script>
+    <script src="../static/app-functions.js"></script>
+    <script src="../static/app-control.js"></script>
+    <script src="../static/context-menu.js"></script>
+    <script src="../static/graph.js"></script>
+
+    <script>
+      Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+
+  </body>
+
+</html>

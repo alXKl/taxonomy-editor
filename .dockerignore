@@ -1,0 +1,8 @@
+__pycache__/
+#app/embeddings/Gensim_skipgram.txt
+#app/embeddings/GloVe_vectors.txt
+#app/embeddings/indexGensim_skipgram
+#app/embeddings/indexGloVe_vectors
+.gitattributes
+.gitignore
+readme.txt
