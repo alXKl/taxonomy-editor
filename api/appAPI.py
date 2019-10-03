@@ -10,7 +10,7 @@ class appAPI(Resource):
         projectDetails = {
                 "version" : "1.0.0.0",
                 "owner" : "Alex",
-                "projectName" : "Python Flask Docker Container"
+                "projectName" : "Taxonomy Editor"
         }
 
 

@@ -21,7 +21,9 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-
+'''
+Test if file is existing.
+'''
 def file_accessible(filepath, mode):
     try:
         f = open(filepath, mode)
@@ -31,6 +33,9 @@ def file_accessible(filepath, mode):
     return True
 
 
+'''
+Upload own custom model.
+'''
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_model():
     if request.method == 'POST':
@@ -50,6 +55,9 @@ def upload_model():
     return "Error"
 
 
+'''
+Load one of default german or english word-model
+'''
 @app.route('/model', methods=['POST'])
 def get_model():
     lang = request.form['model']
@@ -64,6 +72,9 @@ def get_model():
     return 'Success'
 
 
+'''
+Generate new random term.
+'''
 @app.route('/random', methods=['POST', 'GET'])
 def get_random():
     words = []
@@ -76,6 +87,9 @@ def get_random():
     return response
 
 
+'''
+Check if word is existing in embedding.
+'''
 @app.route('/checkword', methods=['POST'])
 def word_in_embedding():
     term = str(request.form['term'])
@@ -83,14 +97,19 @@ def word_in_embedding():
     return str(response)
 
 
+'''
+Get deltas for specific relation-type.
+'''
 @app.route('/projection', methods=['POST'])
 def get_matrix_delta():
     relation = str(request.form['relation'])
     response = o.get_delta(relation).tolist()
-    # print(response, file=sys.stderr)
     return json.dumps(response)
 
 
+'''
+Train data from temporary batch.
+'''
 @app.route('/trainbatch', methods=['POST'])
 def train_batch():
     # batch = request.get_json()
@@ -104,6 +123,9 @@ def train_batch():
     return 'Batch trained'
 
 
+'''
+Predict terms for given word and relation-type
+'''
 @app.route('/relationnode', methods=['POST'])
 def get_related_terms():
     relation = str(request.form['relation'])
@@ -121,6 +143,9 @@ def get_related_terms():
     return json.dumps(d)
 
 
+'''
+Calculate analogies.
+'''
 @app.route('/analogies', methods=['POST'])
 def get_analogies():
     term1 = str(request.form['term1'])
@@ -136,6 +161,9 @@ def get_analogies():
     return json.dumps(d)
 
 
+'''
+Predict a relation-type for a word-pair.
+'''
 @app.route('/relationlink', methods=['POST'])
 def get_related_links():
     source = str(request.form['source'])
@@ -148,6 +176,9 @@ def get_related_links():
     return json.dumps(d)
 
 
+'''
+Re-initialize all projection-matrices.
+'''
 @app.route('/resetmat', methods=['POST','GET'])
 def reset_matrices():
     o.reset_matrices()
@@ -155,6 +186,9 @@ def reset_matrices():
     return 'Success'
 
 
+'''
+Get all history data.
+'''
 @app.route('/history', methods=['POST','GET'])
 def history():
     response = o.get_history()
@@ -162,6 +196,9 @@ def history():
     return json.dumps(response)
 
 
+'''
+Clear all annotations in history.
+'''
 @app.route('/clearhistory', methods=['POST','GET'])
 def clear_history():
     o.clear_history()
@@ -169,6 +206,9 @@ def clear_history():
     return 'Success'
 
 
+'''
+Train on all history data.
+'''
 @app.route('/learnhistory', methods=['POST'])
 def train_history():
     alpha = float(request.form['alpha'])
@@ -177,6 +217,9 @@ def train_history():
     return 'Success'
 
 
+'''
+Save edited history.
+'''
 @app.route('/savehistory', methods=['POST'])
 def save_history():
     hist = request.get_json()
@@ -184,6 +227,9 @@ def save_history():
     return 'Success'
 
 
+'''
+Call editor interface at /
+'''
 @app.route('/')
 def ui():
     return render_template('index.html')

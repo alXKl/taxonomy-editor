@@ -114,7 +114,7 @@ function annotate(relation, mode){
     }
     selected_link.relation = relation;
 
-    if(relation === "syno" || relation === "anto" || relation === "cohypo" || relation === "tropo"){
+    if(relation === "syno" || relation === "anto" || relation === "cohypo"){
         selected_link[direction] = false;
     }
     else {

@@ -1,1 +1,1 @@
-[]
+[{"x": "Baum", "y": "Hund", "relation": "hyper"}, {"x": "Baum", "y": "Hund", "relation": "cohypo"}, {"x": "Baum", "y": "Hund", "relation": "tropo"}]
