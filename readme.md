@@ -54,20 +54,20 @@ So e.g. there shouldn't be pos tags or any other additional informations.
 
 ## 4. Manual
 
-###4.1. Load word models
+### 4.1. Load word models
 First, choose one of the two german or english word models. The third option is to select an own 
 custom model from your directory to work with. Afterwards hit the *Load* button and the respective 
 embedding will loaded into the application. While loading, all vectors are normalized to **L2 norm**.
 If you load your own model, it will be indexed  by the nmslib module automatically.
 
-###4.2. Add new words
+### 4.2. Add new words
 With a word-embedding initialized, you can start to build a graph. Provide new terms with the 
 text input field. The app will accept only words that are contained in the respective loaded model. 
 Alternatively, you can generate some random term of the word model by double-clicking anywhere on 
 the canvas. A selected word can be removed from the graph anytime by hitting remove/delete, or with 
 the **context-menu on right-clicking the word**.
 
-###4.3. Basic word-embedding operations
+### 4.3. Basic word-embedding operations
 Generate the **Nearest Neighbors** of a word by right-clicking a word and selecting the respective 
 option. The **query-result window** will pop up, showing the respective terms ordered by their cosine-
 similarities. With selecting a word from the result, it will be integrated into the graph. The 
@@ -82,7 +82,7 @@ word_2 - word_1 + word_3
 ```
 For the resulting vector, the app then shows the nearest neighbors in the vector space.
 
-###4.4. Annotating relations
+### 4.4. Annotating relations
 For the later on learning process, relation types have to be annotated between two words first. Therefor
 drag a link between two words. A grey link is indicating no relation yet. For annotating the link, 
 open the context-menu by right-clicking the link and chose the respective relation-type in *Annotate*.
@@ -109,7 +109,7 @@ Because there is no definition of a relation in the appliation before the learni
 in fact introduce an own relation type and treat it as one of the above relations. Just make sure to
 be consistent when annotating over the whole process.
 
-###4.5. Learning & Predicting
+### 4.5. Learning & Predicting
 Whith annotating word-pairs, training data is created in the form of
 ```console
 {"x":"word_1","y":"word_2","relation":"relation-type"}
@@ -158,7 +158,7 @@ All matrices can be reset anytime in the *Learning* panel, re-initializing them 
 By doing so, the precisions of predictions so far, will be reset as well.
 
 
-###4.6. Projection deltas
+### 4.6. Projection deltas
 The application can visualize the adaptation of a projection-matrix being made during training. Therefor the
 deltas of a relation matrix are calculated with regard to it's initialized values. The outcome is a heatmap 
 that can be seen under *Projections*.\
@@ -166,7 +166,7 @@ The hypothesis here is that a specific relation-matrix is getting specialized on
 indicating it by a shift of it's values during training. For this observation, however, there must be sufficient 
 and appropriate training data available, what brings us to the next feature of the application.
 
-###4.6. History
+### 4.6. History
 Whenever data of the temporary batch is being learned, all annotations are written into the persistent history 
 parallelly. Like the temporary batch, the history prevents duplicate annotations and x - y annotations
 of undirected relations, if an y - x annotation is already present.\
