@@ -37,6 +37,9 @@ http://localhost:5000/
 While building the image, **pip** will be downgraded to **v 9.0.3** for a proper installation
 of **pybind11**. Otherwise **nmslib** won't be installed correctly on the image.
 
+**Note:** In the current **beta version** the application runs on a single image. Although this doesn't cause
+any issues on the functionality of the app, the persistence of the *History data* have to be realized with
+an additional volume in the next step. Also the default two word-embeddings will be build with read-volumes.
 
 ## 3. Requirements
 The editor comes with two own default word-embeddings, for german and english. The german 
@@ -51,6 +54,10 @@ Only constraint is having the vectors strictly the form
 word val_1 val_2 ... val_n
 ```
 So e.g. there shouldn't be pos tags or any other additional informations.
+
+**Note:** Although using *Git Large File System (LFS)*, the default embeddings of the project can't be 
+downloaded without purchasing additional data packs for this project. Please use an own word-embedding until
+this issue has been solved.
 
 ## 4. Manual
 
@@ -175,6 +182,10 @@ whole history.\
 In *Learning* you can train the projection-matrices solely from the history data with *Learn History*.\
 It should be noted to **Clear History** under *History* whenever you change a word model. By not doing this there 
 is a big risk to have words in the history not represented in your word-embedding, leading to corrupted operations.
+
+## Copyright
+
+Copyright (c) 2019 Alexander Klassen. See LICENSE for details.
 
 
 
