@@ -73,7 +73,8 @@ With a word-embedding initialized, you can start to build a graph. Provide new t
 text input field. The app will accept only words that are contained in the respective loaded model. 
 Alternatively, you can generate some random term of the word model by double-clicking anywhere on 
 the canvas. A selected word can be removed from the graph anytime by hitting remove/delete, or with 
-the **context-menu on right-clicking the word**.
+the **context-menu on right-clicking the word**. Note that you can also **restructure the graph by draging 
+by draging nodes or links while holding ctrl**.
 
 ### 4.3. Basic word-embedding operations
 Generate the **Nearest Neighbors** of a word by right-clicking a word and selecting the respective 
