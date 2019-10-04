@@ -21,13 +21,13 @@ application fully offline.
 
 ## 2. Setup with Docker
 
-In the project directory build the image
+In the project directory just
 ```console
-$ docker build -t taxeditor:latest .
+$ docker-compose build
 ```
 After the build, which can take some time, run the container
 ```console
-$ docker run -it -d -p 5000:5000
+$ docker-compose up
 ```
 The application is hosted afterwards on
 ```console
