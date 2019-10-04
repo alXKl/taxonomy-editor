@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  taxeditor:
+    build: .
+    container_name: taxeditor
+    ports:
+      - "5000:5000"

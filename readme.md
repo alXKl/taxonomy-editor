@@ -55,9 +55,10 @@ word val_1 val_2 ... val_n
 ```
 So e.g. there shouldn't be pos tags or any other additional informations.
 
-**Note:** Although using *Git Large File System (LFS)*, the default embeddings of the project can't be 
-downloaded without purchasing additional data packs for this project. Please use an own word-embedding until
-this issue has been solved.
+When uploading own embeddings, following file-formats are supported
+```console
+txt, vec, matrix
+```
 
 ## 4. Manual
 

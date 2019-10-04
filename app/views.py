@@ -16,7 +16,7 @@ app.config['EMBEDDINGS_FOLDER'] = EMBEDDINGS_FOLDER
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-ALLOWED_EXTENSIONS = set(['txt', 'bin', 'matrix', 'vec'])
+ALLOWED_EXTENSIONS = set(['txt', 'matrix', 'vec'])
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -62,8 +62,10 @@ Load one of default german or english word-model
 def get_model():
     lang = request.form['model']
     if lang == 'german':
-        o.load_embedding(EMBEDDINGS_FOLDER+'GloVe_vectors.txt')
-        o.load_index(EMBEDDINGS_FOLDER+'indexGloVe_vectors')
+        # o.load_embedding(EMBEDDINGS_FOLDER+'GloVe_vectors.txt')
+        # o.load_index(EMBEDDINGS_FOLDER+'indexGloVe_vectors')
+        o.load_embedding(EMBEDDINGS_FOLDER + 'smallW2V.vec')
+        o.load_index(EMBEDDINGS_FOLDER + 'indexsmallW2V')
     else:
         o.load_embedding(EMBEDDINGS_FOLDER + 'Gensim_skipgram.txt')
         o.load_index(EMBEDDINGS_FOLDER + 'indexGensim_skipgram')
