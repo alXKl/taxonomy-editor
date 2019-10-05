@@ -65,16 +65,16 @@ txt, vec, matrix
 ### 4.1. Load word models
 First, choose one of the two german or english word models. The third option is to select an own 
 custom model from your directory to work with. Afterwards hit the *Load* button and the respective 
-embedding will loaded into the application. While loading, all vectors are normalized to **L2 norm**.
+embedding will be loaded into the application. While loading, all vectors are normalized to **L2 norm**.
 If you load your own model, it will be indexed  by the nmslib module automatically.
 
 ### 4.2. Add new words
 With a word-embedding initialized, you can start to build a graph. Provide new terms with the 
-text input field. The app will accept only words that are contained in the respective loaded model. 
+text input field. The app will accept only words that are contained in the loaded model. 
 Alternatively, you can generate some random term of the word model by double-clicking anywhere on 
 the canvas. A selected word can be removed from the graph anytime by hitting remove/delete, or with 
-the **context-menu on right-clicking the word**. Note that you can also **restructure the graph by 
-dragging nodes or links while holding ctrl**.
+the **context-menu on right-clicking the word**. Note that you can **re-position all nodes & links in the
+graph by dragging them while holding ctrl**.
 
 ### 4.3. Basic word-embedding operations
 Generate the **Nearest Neighbors** of a word by right-clicking a word and selecting the respective 
@@ -92,7 +92,7 @@ word_2 - word_1 + word_3
 For the resulting vector, the app then shows the nearest neighbors in the vector space.
 
 ### 4.4. Annotating relations
-For the later on learning process, relation types have to be annotated between two words first. Therefor
+For the later-on learning process, relation types have to be annotated between two words first. Therefor
 drag a link between two words. A grey link is indicating no relation yet. For annotating the link, 
 open the context-menu by right-clicking the link and chose the respective relation-type in *Annotate*.
 An alternative, and probably the smoother option, is just **pressing one of the respective relation fields
@@ -119,7 +119,7 @@ in fact introduce an own relation type and treat it as one of the above relation
 be consistent when annotating over the whole process.
 
 ### 4.5. Learning & Predicting
-Whith annotating word-pairs, training data is created in the form of
+Whith annotating word-pairs, training data is created in form of json
 ```console
 {"x":"word_1","y":"word_2","relation":"relation-type"}
 ```
@@ -132,15 +132,15 @@ and so both annotations are integrated into the training-batch, while showing on
 in the graph.\
 However, the system detects if a word-pair was already annotated with the same relation in the past 
 and won't add it to the training data. Also, for non-directed relations the annotation word_1 - word_2
-won't be considered for tarining if the annotation word_2 - word_1 is already present for this relation.
+won't be considered for training, if the annotation word_2 - word_1 is already present for this relation.
 
 When learning the annotations for a specific relation type, or the whole batch at once, the respective data
-is cleared form the batch afterwards, allowing to add any kind of annotations again. You can also clear the 
+is cleared from the batch afterwards, allowing to add any kind of annotations again. You can also clear the 
 batch manually in the *Learning* panel anytime.
 
 The learning process used here is based on 
 [Learning Semantic Hierarchies via Word Embeddings](https://www.researchgate.net/publication/270877882_Learning_Semantic_Hierarchies_via_Word_Embeddings).
-For every relation-type a **Projection Matrix** is initialized with normal distribution of zero and std 0.1.
+For every relation-type a **Projection Matrix Φ** is initialized with normal distribution of zero and std 0.1.
 With the provided training-data, the mean square error of
 ```console
 x Φ - y
@@ -151,13 +151,13 @@ matrices is being used.
 
 To **predict related terms for a word**, choose *Find Related Term* from the context-menu on a node. The 
 dot-product of the given word and the projection matrix for the chosen relation is then being calculated. 
-For the resulting vector the nearest neighbors are queried and represented.\
+For the resulting vector the nearest neighbors are queried and presented.\
 If there is a match in the result-set, select this word and it will be integrated into the graph with the 
-corresponding relation-color. If there are no matching words, click so in the result-window. Either
+corresponding relation. If there are no matching words, click so in the result-window. Either
 way, the **precision of predictions is maintained, based on your selection, in the relation fields at the 
 bottom**.
 
-To **predict a relation type given a word-pair**, open the context menu on the link of the two words and 
+To **predict a relation type given a word-pair**, open the context-menu of the **link between two words** and 
 select *Find Relation*. The dot-product of the two word-vectors is calculated and the resulting matrix is 
 being matched with the existing projection matrices for overall error. The result is the best matching 
 relation-type with the overall error. Selecting the relation from the result-window will color the 
