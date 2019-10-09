@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css')  }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css')  }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='graph.css')  }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='context-menu.css')  }}">
+    <link rel="stylesheet" href="./static/bootstrap.min.css" >
+    <link rel="stylesheet" href="./static/layout.css" >
+    <link rel="stylesheet" href="./static/graph.css">
+    <link rel="stylesheet" href="./static/context-menu.css">
 
     <title>Taxonomy Editor</title>
 
@@ -176,21 +176,21 @@
         <button type="button" class="btn btn-secondary relbtn" id="hyper" data-relation="hyper" data-toggle="tooltip" data-html="true" title="<u>Superordinate</u><br>tulip - flower" style="text-align:left;">Hypernym<span class="badge annobadge" id="hyperbadge" style="float:right;"></span></button>
         <button type="button" class="btn btn-secondary relbtn" id="hypo" data-relation="hypo" data-toggle="tooltip" data-html="true" title="<u>Subordinate</u><br>plant - flower" style="text-align:left;">Hyponym<span class="badge annobadge" id="hypobadge" style="float:right;"></span></button>
         <button type="button" class="btn btn-secondary relbtn" id="cohypo" data-relation="cohypo" data-toggle="tooltip" data-html="true" title="<u>Shared Hypernym</u><br>man - woman" style="text-align:left;">Cohyponym<span class="badge annobadge" id="cohypobadge" style="float:right;"></span></button>
-        <button type="button" class="btn btn-secondary relbtn" id="mero" data-relation="mero" data-toggle="tooltip" data-html="true" title="<u>Part of</u><br>tree - bark" style="text-align:left;">Meronym<span class="badge annobadge" id="merobadge" style="float:right;"></span></button>
-        <button type="button" class="btn btn-secondary relbtn" id="holo" data-relation="holo" data-toggle="tooltip" data-html="true" title="<u>Entire</u><br>tree - forest" style="text-align:left;">Holonym<span class="badge annobadge" id="holobadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="mero" data-relation="mero" data-toggle="tooltip" data-html="true" title="<u>Part of</u><br>bark - tree" style="text-align:left;">Meronym<span class="badge annobadge" id="merobadge" style="float:right;"></span></button>
+        <button type="button" class="btn btn-secondary relbtn" id="holo" data-relation="holo" data-toggle="tooltip" data-html="true" title="<u>Entire</u><br>forest - tree" style="text-align:left;">Holonym<span class="badge annobadge" id="holobadge" style="float:right;"></span></button>
         <button type="button" class="btn btn-secondary relbtn" id="tropo" data-relation="tropo" data-toggle="tooltip" data-html="true" title="<u>Generalization</u><br>spin - move" style="text-align:left;">Troponym<span class="badge annobadge" id="tropobadge" style="float:right;"></span></button>
       </div>
     </nav>
 
-    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='popper.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='plotly.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='d3.v3.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='app-functions.js') }}"></script>
-    <script src="{{ url_for('static', filename='app-control.js') }}"></script>
-    <script src="{{ url_for('static', filename='context-menu.js') }}"></script>
-    <script src="{{ url_for('static', filename='graph.js') }}"></script>
+    <script src="./static/jquery.min.js"></script>
+    <script src="./static/popper.min.js"></script>
+    <script src="./static/bootstrap.min.js"></script>
+    <script src="./static/plotly.min.js"></script>
+    <script src="./static/d3.v3.min.js"></script>
+    <script src="./static/app-functions.js"></script>
+    <script src="./static/app-control.js"></script>
+    <script src="./static/context-menu.js"></script>
+    <script src="./static/graph.js"></script>
 
     <script>
       Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));

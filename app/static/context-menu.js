@@ -1,7 +1,7 @@
 
 var menuNode = [
 	{
-		title: 'Find Related Term',
+		title: 'Suggest new Term',
 		children: [
 			{
                 title: 'Synonym',
@@ -86,7 +86,7 @@ var menuNode = [
 
 var menuLink = [
     {
-        title: 'Find Relation',
+        title: 'Suggest Relation',
         action: function() {
             menuLinkAction();
         }

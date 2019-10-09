@@ -4,3 +4,4 @@ __pycache__/
 .gitattributes
 .gitignore
 readme.md
+docker-compose.yml

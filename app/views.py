@@ -56,7 +56,7 @@ def upload_model():
 
 
 '''
-Load one of default german or english word-model
+Load one of default german or english word-model.
 '''
 @app.route('/model', methods=['POST'])
 def get_model():
@@ -124,7 +124,7 @@ def train_batch():
 
 
 '''
-Predict terms for given word and relation-type
+Predict terms for given word and relation-type.
 '''
 @app.route('/relationnode', methods=['POST'])
 def get_related_terms():

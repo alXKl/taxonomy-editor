@@ -160,7 +160,7 @@ bottom**.
 To **predict a relation type given a word-pair**, open the context-menu of the **link between two words** and 
 select *Find Relation*. The dot-product of the two word-vectors is calculated and the resulting matrix is 
 being matched with the existing projection matrices for overall error. The result is the best matching 
-relation-type with the overall error. Selecting the relation from the result-window will color the 
+relation-type with the overall error. Selecting the relation from the result-window will colour the 
 corresponding link, but have no effect on the precisions in the bottom fields.
 
 All matrices can be reset anytime in the *Learning* panel, re-initializing them with a new normal distribution.
