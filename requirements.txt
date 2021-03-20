@@ -6,7 +6,7 @@ werkzeug==0.15.3
 aniso8601==3.0.2
 click==6.7
 itsdangerous==0.24
-Jinja2==2.10.1
+Jinja2==2.11.3
 MarkupSafe==1.0
 pytz==2018.5
 six==1.11.0
